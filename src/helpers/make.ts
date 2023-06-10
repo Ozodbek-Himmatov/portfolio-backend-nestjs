@@ -1,17 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-function makeFiles(
-  folderName: string,
-  name: string,
-  props: object,
-  createDto: object = {},
-  updateDto: object = {},
-) {
-  createDto =
-    createDto ||
-    Object.fromEntries(Object.entries(props).map((i) => [i[0], i[1][0]]));
-
+function makeFiles(folderName: string, name: string, props: object) {
   // ALL FUNCTIONS
   let mkDir = path.resolve(__dirname, '..', folderName);
   let readFromExample = (name: string) => {
@@ -42,27 +32,31 @@ function makeFiles(
     for (let i in props) {
       propsArea += `@Prop(${props[i][1]})\n\t${i}:${props[i][0]};\n\n\t`;
     }
+
     return content.replace(/'props'/, propsArea);
   };
 
   let writeCreateDto = (content: string) => {
-    let propsArea: string = '';
-    for (let i in createDto) {
-      propsArea += `${i}: ${createDto[i]};\n\t`;
+    let str = '';
+    for (let i in props) {
+      str += `@ApiProperty({ example: "${props[i][2]}" })\n\t${i}: ${
+        props[i][0].length > 10 ? 'number' : props[i][0]
+      };\n\n\t`;
     }
-    return content.replace(/'dto'/, propsArea);
+    return content.replace(/'dto'/, str);
   };
 
   let writeUpdateDto = (content: string) => {
-    let propsArea: string = '';
-    let dto = updateDto || createDto;
-    for (let i in dto) {
-      propsArea += `${i}?: ${dto[i]};\n\t`;
+    let str = '';
+    for (let i in props) {
+      str += `@ApiProperty({ example: "${props[i][2]}" })\n\t${i}?: ${
+        props[i][0].length > 10 ? 'number' : props[i][0]
+      };\n\n\t`;
     }
-    return content.replace(/'dto'/, propsArea);
+    return content.replace(/'dto'/, str);
   };
 
-  // FUNTIONS END
+  // FUNCTIONS END
 
   try {
     fs.mkdirSync(mkDir);
@@ -84,7 +78,7 @@ function makeFiles(
     );
     console.log('Controller created');
   } catch (error) {
-    console.log('Controllerda Yozishda xatolik');
+    console.log('Error while creating Controller');
   }
 
   // CREATE SERVICE FILE
@@ -92,7 +86,7 @@ function makeFiles(
     fs.writeFileSync(mkDir + `/${folderName}.service.ts`, replaceName(service));
     console.log('Service created');
   } catch (error) {
-    console.log('Service Yozishda xatolik');
+    console.log('Error while writing Service');
   }
 
   // CREATE MODULE FILE
@@ -100,7 +94,7 @@ function makeFiles(
     fs.writeFileSync(mkDir + `/${folderName}.module.ts`, replaceName(module));
     console.log('Module created');
   } catch (error) {
-    console.log('Module Yozishda xatolik');
+    console.log('Error while writing Module');
   }
 
   // CREATE SCHEMA
@@ -109,7 +103,7 @@ function makeFiles(
       fs.mkdirSync(mkDir + '/schemas');
       console.log('Schema created');
     } catch (error) {
-      console.log('Schema Papka oldin bor edi.');
+      console.log('The Schema folder already exists');
     }
     fs.writeFileSync(
       mkDir + `/schemas/${folderName}.schema.ts`,
@@ -117,7 +111,7 @@ function makeFiles(
     );
     console.log('Schema created');
   } catch (error) {
-    console.log('Schema Yozishda xatolik');
+    console.log('Error while writing Schema');
   }
 
   // CREATE DTO FOLDER
@@ -125,10 +119,10 @@ function makeFiles(
     fs.mkdirSync(mkDir + '/dto');
     console.log('Dto created');
   } catch (error) {
-    console.log('Dto Papka oldin bor edi.');
+    console.log('The Dto folder already exists');
   }
 
-  // CREATE CREATEDTO FILE
+  // CREATE CREATE DTO FILE
   try {
     fs.writeFileSync(
       mkDir + `/dto/create-${folderName}.dto.ts`,
@@ -136,10 +130,10 @@ function makeFiles(
     );
     console.log('CreateDto created');
   } catch (error) {
-    console.log('CreateDto Yozishda xatolik');
+    console.log('Error while writing CreateDto');
   }
 
-  // CREATE UPDATEDTO FILE
+  // CREATE UPDATE DTO FILE
   try {
     fs.writeFileSync(
       mkDir + `/dto/update-${folderName}.dto.ts`,
@@ -147,34 +141,34 @@ function makeFiles(
     );
     console.log('UpdateDto created');
   } catch (error) {
-    console.log('UpdateDto Yozishda xatolik');
+    console.log('Error while writing UpdateDto');
   }
 }
 
 // ADMIN
 makeFiles('admin', 'Admin', {
-  fullname: ['string', ''],
-  password: ['string', ''],
-  email: ['string', ''],
-  phone: ['string', ''],
-  token: ['string', ''],
-  description: ['string', ''],
-  avatar: ['string', ''],
+  fullname: ['string', '', ''],
+  password: ['string', '', ''],
+  email: ['string', '', ''],
+  phone: ['string', '', ''],
+  token: ['string', '', ''],
+  description: ['string', '', ''],
+  avatar: ['string', '', ''],
 });
 
 // USERS
 makeFiles('users', 'Users', {
-  username: ['string', ''],
-  password: ['string', ''],
-  token: ['string', ''],
+  username: ['string', '', ''],
+  password: ['string', '', ''],
+  token: ['string', '', ''],
 });
 
 // POSTS
 makeFiles('posts', 'Posts', {
-  img: ['string', ''],
-  title: ['string', ''],
-  content: ['string', ''],
-  tags: ['string', ''],
+  img: ['string', '', ''],
+  title: ['string', '', ''],
+  content: ['string', '', ''],
+  tags: ['string', '', ''],
 });
 
 // COMMENTS
@@ -182,19 +176,21 @@ makeFiles('comments', 'Comments', {
   user_id: [
     'mongoose.Schema.Types.ObjectId',
     "[{ type: mongoose.Schema.Types.ObjectId, ref:'Users'  }]",
+    '',
   ],
   post_id: [
     'mongoose.Schema.Types.ObjectId',
     "[{ type: mongoose.Schema.Types.ObjectId, ref:'Posts'  }]",
+    '',
   ],
-  content: ['string', ''],
-  time: ['string', ''],
+  content: ['string', '', ''],
+  time: ['string', '', ''],
 });
 
 // REACTIONS
 makeFiles('reactions', 'Reactions', {
-  name: ['string', ''],
-  img: ['string', ''],
+  name: ['string', '', ''],
+  img: ['string', '', ''],
 });
 
 // POST_REACTIONS
@@ -202,22 +198,25 @@ makeFiles('post-reactions', 'PostReactions', {
   reaction_id: [
     'mongoose.Schema.Types.ObjectId',
     "[{ type: mongoose.Schema.Types.ObjectId, ref:'Reactions'  }]",
+    '',
   ],
   post_id: [
     'mongoose.Schema.Types.ObjectId',
     "[{ type: mongoose.Schema.Types.ObjectId, ref:'Posts'  }]",
+    '',
   ],
   user_id: [
     'mongoose.Schema.Types.ObjectId',
     "[{ type: mongoose.Schema.Types.ObjectId, ref:'Users'  }]",
+    '',
   ],
-  quantity: ['number', ''],
+  quantity: ['number', '', ''],
 });
 
 // DESCRIPTION
 makeFiles('description', 'Description', {
-  title: ['string', ''],
-  description: ['string', ''],
+  title: ['string', '', ''],
+  description: ['string', '', ''],
 });
 
 // PROJECTS
@@ -225,10 +224,11 @@ makeFiles('projects', 'Projects', {
   description_id: [
     'mongoose.Schema.Types.ObjectId',
     "[{ type: mongoose.Schema.Types.ObjectId, ref:'Description'  }]",
+    '',
   ],
-  title: ['string', ''],
-  preview: ['string', ''],
-  demo: ['string', ''],
+  title: ['string', '', ''],
+  preview: ['string', '', ''],
+  demo: ['string', '', ''],
 });
 
 // IMAGES
@@ -236,27 +236,28 @@ makeFiles('images', 'Images', {
   project_id: [
     'mongoose.Schema.Types.ObjectId',
     "[{ type: mongoose.Schema.Types.ObjectId, ref:'Projects'  }]",
+    '',
   ],
-  title: ['string', ''],
-  img: ['string', ''],
+  title: ['string', '', ''],
+  img: ['string', '', ''],
 });
 
 // ADDRESSES
 makeFiles('addresses', 'Addresses', {
-  name: ['string', ''],
-  address: ['string', ''],
-  icon: ['string', ''],
+  name: ['string', '', ''],
+  address: ['string', '', ''],
+  icon: ['string', '', ''],
 });
 
 // SKILLS
 makeFiles('skills', 'Skills', {
-  title: ['string', ''],
-  icon: ['string', ''],
-  rating: ['string', ''],
+  title: ['string', '', ''],
+  icon: ['string', '', ''],
+  rating: ['string', '', ''],
 });
 
 // EDUCATION
 makeFiles('education', 'Education', {
-  name: ['string', ''],
-  time: ['string', ''],
+  name: ['string', '', ''],
+  time: ['string', '', ''],
 });
