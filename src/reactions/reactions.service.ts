@@ -9,30 +9,30 @@ import { Model } from 'mongoose';
 export class ReactionsService {
   constructor(
     @InjectModel(Reactions.name)
-    private orderModel: Model<ReactionsDocument>,
+    private reactionsModel: Model<ReactionsDocument>,
   ) {}
 
   async create(createReactionsDto: CreateReactionsDto) {
-    const res = await new this.orderModel(createReactionsDto).save();
+    const res = await new this.reactionsModel(createReactionsDto).save();
     return res;
   }
 
   async findAll(query: string) {
-    const res = await this.orderModel.find().exec();
+    const res = await this.reactionsModel.find().exec();
     return res;
   }
 
   async findOne(id: string) {
-    return this.orderModel.findById(id).exec();
+    return this.reactionsModel.findById(id).exec();
   }
 
   async update(id: string, updateReactionsDto: UpdateReactionsDto) {
-    return this.orderModel
+    return this.reactionsModel
       .findByIdAndUpdate(id, updateReactionsDto, { new: true })
       .exec();
   }
 
   async remove(id: string) {
-    return this.orderModel.findByIdAndDelete(id).exec();
+    return this.reactionsModel.findByIdAndDelete(id).exec();
   }
 }

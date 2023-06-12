@@ -9,6 +9,4 @@ export class UpdateAddressesDto {
 
 	@ApiProperty({ example: "" })
 	icon?: string;
-
-	;
 }

@@ -9,30 +9,30 @@ import { Model } from 'mongoose';
 export class UsersService {
   constructor(
     @InjectModel(Users.name)
-    private orderModel: Model<UsersDocument>,
+    private usersModel: Model<UsersDocument>,
   ) {}
 
   async create(createUsersDto: CreateUsersDto) {
-    const res = await new this.orderModel(createUsersDto).save();
+    const res = await new this.usersModel(createUsersDto).save();
     return res;
   }
 
   async findAll(query: string) {
-    const res = await this.orderModel.find().exec();
+    const res = await this.usersModel.find().exec();
     return res;
   }
 
   async findOne(id: string) {
-    return this.orderModel.findById(id).exec();
+    return this.usersModel.findById(id).exec();
   }
 
   async update(id: string, updateUsersDto: UpdateUsersDto) {
-    return this.orderModel
+    return this.usersModel
       .findByIdAndUpdate(id, updateUsersDto, { new: true })
       .exec();
   }
 
   async remove(id: string) {
-    return this.orderModel.findByIdAndDelete(id).exec();
+    return this.usersModel.findByIdAndDelete(id).exec();
   }
 }

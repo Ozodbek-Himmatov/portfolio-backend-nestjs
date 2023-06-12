@@ -9,30 +9,30 @@ import { Model } from 'mongoose';
 export class DescriptionService {
   constructor(
     @InjectModel(Description.name)
-    private orderModel: Model<DescriptionDocument>,
+    private descriptionModel: Model<DescriptionDocument>,
   ) {}
 
   async create(createDescriptionDto: CreateDescriptionDto) {
-    const res = await new this.orderModel(createDescriptionDto).save();
+    const res = await new this.descriptionModel(createDescriptionDto).save();
     return res;
   }
 
   async findAll(query: string) {
-    const res = await this.orderModel.find().exec();
+    const res = await this.descriptionModel.find().exec();
     return res;
   }
 
   async findOne(id: string) {
-    return this.orderModel.findById(id).exec();
+    return this.descriptionModel.findById(id).exec();
   }
 
   async update(id: string, updateDescriptionDto: UpdateDescriptionDto) {
-    return this.orderModel
+    return this.descriptionModel
       .findByIdAndUpdate(id, updateDescriptionDto, { new: true })
       .exec();
   }
 
   async remove(id: string) {
-    return this.orderModel.findByIdAndDelete(id).exec();
+    return this.descriptionModel.findByIdAndDelete(id).exec();
   }
 }

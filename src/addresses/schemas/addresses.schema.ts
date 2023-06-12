@@ -13,8 +13,6 @@ export class Addresses {
 
 	@Prop()
 	icon:string;
-
-	;
 }
 
 export const AddressesSchema = SchemaFactory.createForClass(Addresses);

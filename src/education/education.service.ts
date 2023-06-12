@@ -9,30 +9,30 @@ import { Model } from 'mongoose';
 export class EducationService {
   constructor(
     @InjectModel(Education.name)
-    private orderModel: Model<EducationDocument>,
+    private educationModel: Model<EducationDocument>,
   ) {}
 
   async create(createEducationDto: CreateEducationDto) {
-    const res = await new this.orderModel(createEducationDto).save();
+    const res = await new this.educationModel(createEducationDto).save();
     return res;
   }
 
   async findAll(query: string) {
-    const res = await this.orderModel.find().exec();
+    const res = await this.educationModel.find().exec();
     return res;
   }
 
   async findOne(id: string) {
-    return this.orderModel.findById(id).exec();
+    return this.educationModel.findById(id).exec();
   }
 
   async update(id: string, updateEducationDto: UpdateEducationDto) {
-    return this.orderModel
+    return this.educationModel
       .findByIdAndUpdate(id, updateEducationDto, { new: true })
       .exec();
   }
 
   async remove(id: string) {
-    return this.orderModel.findByIdAndDelete(id).exec();
+    return this.educationModel.findByIdAndDelete(id).exec();
   }
 }

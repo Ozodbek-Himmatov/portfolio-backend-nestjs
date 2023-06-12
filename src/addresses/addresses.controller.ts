@@ -13,7 +13,6 @@ import { AddressesService } from './addresses.service';
 import { CreateAddressesDto } from './dto/create-addresses.dto';
 import { UpdateAddressesDto } from './dto/update-addresses.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-// import { JwtAuthGuard } from '../../guards/jwt-auth.guards';
 import { HttpCode } from '@nestjs/common';
 
 @ApiTags('Addresses')

@@ -9,6 +9,4 @@ export class CreateAddressesDto {
 
 	@ApiProperty({ example: "" })
 	icon: string;
-
-	;
 }
