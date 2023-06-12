@@ -13,8 +13,6 @@ export class Users {
 
 	@Prop()
 	token:string;
-
-	;
 }
 
 export const UsersSchema = SchemaFactory.createForClass(Users);

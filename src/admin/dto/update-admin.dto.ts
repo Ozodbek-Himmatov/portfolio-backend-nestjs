@@ -21,6 +21,4 @@ export class UpdateAdminDto {
 
 	@ApiProperty({ example: "" })
 	avatar?: string;
-
-	;
 }

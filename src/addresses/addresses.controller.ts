@@ -6,7 +6,6 @@ import {
   Put,
   Param,
   Delete,
-  UseGuards,
   Query,
 } from '@nestjs/common';
 import { AddressesService } from './addresses.service';
@@ -20,7 +19,6 @@ import { HttpCode } from '@nestjs/common';
 export class AddressesController {
   constructor(private readonly addressesService: AddressesService) {}
 
-  //  @UseGuards(JwtAuthGuard)
   @HttpCode(200)
   @ApiOperation({ summary: 'Create addresses' })
   @Post()
@@ -28,7 +26,6 @@ export class AddressesController {
     return this.addressesService.create(createAddressesDto);
   }
 
-  //  @UseGuards(JwtAuthGuard)
   @HttpCode(200)
   @ApiOperation({ summary: 'Find all addresses' })
   @Get()
@@ -36,7 +33,6 @@ export class AddressesController {
     return this.addressesService.findAll(query);
   }
 
-  //  @UseGuards(JwtAuthGuard)
   @HttpCode(200)
   @ApiOperation({ summary: 'Get one addresses' })
   @Get(':id')
@@ -44,7 +40,6 @@ export class AddressesController {
     return this.addressesService.findOne(id);
   }
 
-  //  @UseGuards(JwtAuthGuard)
   @HttpCode(200)
   @ApiOperation({ summary: 'Update addresses by id' })
   @Put(':id')
@@ -52,7 +47,6 @@ export class AddressesController {
     return this.addressesService.update(id, updateAddressesDto);
   }
 
-  //  @UseGuards(JwtAuthGuard)
   @HttpCode(200)
   @ApiOperation({ summary: 'Delete addresses by id' })
   @Delete(':id')

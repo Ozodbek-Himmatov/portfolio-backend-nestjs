@@ -6,6 +6,4 @@ export class UpdateEducationDto {
 
 	@ApiProperty({ example: "" })
 	time?: string;
-
-	;
 }

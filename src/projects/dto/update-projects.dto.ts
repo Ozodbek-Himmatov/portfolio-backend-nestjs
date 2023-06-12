@@ -12,6 +12,4 @@ export class UpdateProjectsDto {
 
 	@ApiProperty({ example: "" })
 	demo?: string;
-
-	;
 }

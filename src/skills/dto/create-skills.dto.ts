@@ -9,6 +9,4 @@ export class CreateSkillsDto {
 
 	@ApiProperty({ example: "" })
 	rating: string;
-
-	;
 }

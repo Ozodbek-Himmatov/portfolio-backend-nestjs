@@ -9,6 +9,4 @@ export class CreateUsersDto {
 
 	@ApiProperty({ example: "" })
 	token: string;
-
-	;
 }

@@ -12,6 +12,4 @@ export class CreateCommentsDto {
 
 	@ApiProperty({ example: "" })
 	time: string;
-
-	;
 }

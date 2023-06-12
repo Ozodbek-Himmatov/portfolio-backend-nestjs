@@ -10,8 +10,6 @@ export class Education {
 
 	@Prop()
 	time:string;
-
-	;
 }
 
 export const EducationSchema = SchemaFactory.createForClass(Education);

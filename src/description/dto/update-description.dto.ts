@@ -6,6 +6,4 @@ export class UpdateDescriptionDto {
 
 	@ApiProperty({ example: "" })
 	description?: string;
-
-	;
 }

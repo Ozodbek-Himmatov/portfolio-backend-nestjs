@@ -6,6 +6,4 @@ export class UpdateReactionsDto {
 
 	@ApiProperty({ example: "" })
 	img?: string;
-
-	;
 }

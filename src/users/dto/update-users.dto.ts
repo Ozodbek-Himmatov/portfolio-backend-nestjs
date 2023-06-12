@@ -9,6 +9,4 @@ export class UpdateUsersDto {
 
 	@ApiProperty({ example: "" })
 	token?: string;
-
-	;
 }

@@ -6,6 +6,4 @@ export class CreateReactionsDto {
 
 	@ApiProperty({ example: "" })
 	img: string;
-
-	;
 }

@@ -12,6 +12,4 @@ export class CreatePostReactionsDto {
 
 	@ApiProperty({ example: "" })
 	quantity: number;
-
-	;
 }

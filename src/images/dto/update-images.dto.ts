@@ -9,6 +9,4 @@ export class UpdateImagesDto {
 
 	@ApiProperty({ example: "" })
 	img?: string;
-
-	;
 }

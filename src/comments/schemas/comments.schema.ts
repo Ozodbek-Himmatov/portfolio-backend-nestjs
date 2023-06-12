@@ -16,8 +16,6 @@ export class Comments {
 
 	@Prop()
 	time:string;
-
-	;
 }
 
 export const CommentsSchema = SchemaFactory.createForClass(Comments);

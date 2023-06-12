@@ -25,8 +25,6 @@ export class Admin {
 
 	@Prop()
 	avatar:string;
-
-	;
 }
 
 export const AdminSchema = SchemaFactory.createForClass(Admin);

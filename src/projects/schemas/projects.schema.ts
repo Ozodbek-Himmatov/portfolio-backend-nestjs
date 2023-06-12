@@ -16,8 +16,6 @@ export class Projects {
 
 	@Prop()
 	demo:string;
-
-	;
 }
 
 export const ProjectsSchema = SchemaFactory.createForClass(Projects);

@@ -12,6 +12,4 @@ export class UpdateCommentsDto {
 
 	@ApiProperty({ example: "" })
 	time?: string;
-
-	;
 }

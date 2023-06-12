@@ -13,8 +13,6 @@ export class Images {
 
 	@Prop()
 	img:string;
-
-	;
 }
 
 export const ImagesSchema = SchemaFactory.createForClass(Images);

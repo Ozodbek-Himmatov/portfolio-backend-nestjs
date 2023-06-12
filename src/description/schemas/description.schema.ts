@@ -10,8 +10,6 @@ export class Description {
 
 	@Prop()
 	description:string;
-
-	;
 }
 
 export const DescriptionSchema = SchemaFactory.createForClass(Description);

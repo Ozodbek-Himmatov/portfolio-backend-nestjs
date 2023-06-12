@@ -9,6 +9,4 @@ export class CreateImagesDto {
 
 	@ApiProperty({ example: "" })
 	img: string;
-
-	;
 }

@@ -10,8 +10,6 @@ export class Reactions {
 
 	@Prop()
 	img:string;
-
-	;
 }
 
 export const ReactionsSchema = SchemaFactory.createForClass(Reactions);

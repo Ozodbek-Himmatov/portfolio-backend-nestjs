@@ -13,8 +13,6 @@ export class Skills {
 
 	@Prop()
 	rating:string;
-
-	;
 }
 
 export const SkillsSchema = SchemaFactory.createForClass(Skills);

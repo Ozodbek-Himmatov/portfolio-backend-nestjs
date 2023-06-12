@@ -16,8 +16,6 @@ export class PostReactions {
 
 	@Prop()
 	quantity:number;
-
-	;
 }
 
 export const PostReactionsSchema = SchemaFactory.createForClass(PostReactions);

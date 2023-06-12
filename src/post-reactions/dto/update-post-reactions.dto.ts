@@ -12,6 +12,4 @@ export class UpdatePostReactionsDto {
 
 	@ApiProperty({ example: "" })
 	quantity?: number;
-
-	;
 }

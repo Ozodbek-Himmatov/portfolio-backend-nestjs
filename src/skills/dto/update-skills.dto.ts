@@ -9,6 +9,4 @@ export class UpdateSkillsDto {
 
 	@ApiProperty({ example: "" })
 	rating?: string;
-
-	;
 }
