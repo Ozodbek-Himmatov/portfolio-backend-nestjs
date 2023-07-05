@@ -43,7 +43,7 @@ const start = async () => {
     });
 
     app.listen(PORT, () => {
-      console.log(`Server ${PORT} da yuguryapti...`);
+      console.log(`Server is running on PORT ${PORT}`);
     });
     if (process.env.NODE_ENV === 'development') {
       const pathToSwaggerStaticFolder = resolve(
