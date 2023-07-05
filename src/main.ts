@@ -1,6 +1,5 @@
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import * as cookieParser from 'cookie-parser';
 import { AppModule } from './app.module';
 import { resolve } from 'path';
 import { writeFileSync } from 'fs';
@@ -42,7 +41,6 @@ const start = async () => {
         'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui-standalone-preset.js',
       ],
     });
-    app.use(cookieParser.default());
 
     app.listen(PORT, () => {
       console.log(`Server ${PORT} da yuguryapti...`);
