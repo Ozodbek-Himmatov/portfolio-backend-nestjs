@@ -6,7 +6,6 @@ import {
   Put,
   Param,
   Delete,
-  UseGuards,
   Query,
 } from '@nestjs/common';
 import { AdminService } from './admin.service';
@@ -23,7 +22,6 @@ import { AdminGuards } from '../guards/admin.guard';
 export class AdminController {
   constructor(private readonly adminService: AdminService) {}
 
-  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Create admins' })
   @Post()
@@ -31,7 +29,6 @@ export class AdminController {
     return this.adminService.create(createAdminDto);
   }
 
-  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Find all admins' })
   @Get()
@@ -39,7 +36,6 @@ export class AdminController {
     return this.adminService.findAll(query);
   }
 
-  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Get one admins' })
   @Get(':id')
@@ -47,7 +43,6 @@ export class AdminController {
     return this.adminService.findOne(id);
   }
 
-  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Update admins by id' })
   @Put(':id')
@@ -55,7 +50,6 @@ export class AdminController {
     return this.adminService.update(id, updateAdminDto);
   }
 
-  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Delete admins by id' })
   @Delete(':id')

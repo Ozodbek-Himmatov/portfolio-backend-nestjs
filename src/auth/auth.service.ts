@@ -7,8 +7,8 @@ import {
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { Response } from 'express';
-import { LoginDto } from './dto/login-user.dto';
 import { AdminService } from '../admin/admin.service';
+import { CreateAdminDto } from 'src/admin/dto/create-admin.dto';
 
 @Injectable()
 export class AuthService {
@@ -17,8 +17,8 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async login(loginDto: LoginDto, res: Response) {
-    const { username, password } = loginDto;
+  async login(createAdminDto: CreateAdminDto, res: Response) {
+    const { username, password } = createAdminDto;
     const admins = await this.adminService.findOneLogin(username);
     if (!admins) {
       throw new HttpException(
