@@ -1,12 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateSkillsDto {
-  @ApiProperty({ example: "" })
+  @ApiProperty({ example: "javascript" })
 	title: string;
 
-	@ApiProperty({ example: "" })
+	@ApiProperty({ example: "bx bxl-javascript" })
 	icon: string;
 
-	@ApiProperty({ example: "" })
+	@ApiProperty({ example: "5" })
 	rating: string;
 }

@@ -1,12 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateAddressesDto {
-  @ApiProperty({ example: "Telegram" })
+  @ApiProperty({ example: "" })
 	name: string;
 
-	@ApiProperty({ example: "https://t.me/servantOfTheGatherer" })
+	@ApiProperty({ example: "" })
 	address: string;
 
-	@ApiProperty({ example: "bx bxl-telegram" })
+	@ApiProperty({ example: "" })
 	icon: string;
 }

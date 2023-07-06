@@ -1,9 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-export class CreateReactionsDto {
+export class UpdateDescriptionDto {
   @ApiProperty({ example: "" })
-	name: string;
+	title?: string;
 
 	@ApiProperty({ example: "" })
-	img: string;
+	description?: string;
+
+	;
 }

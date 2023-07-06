@@ -1,15 +1,17 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-export class CreatePostReactionsDto {
-  @ApiProperty({ example: "" })
-	reaction_id: number;
+export class CreateCommentsDto {
 
 	@ApiProperty({ example: "" })
 	post_id: number;
 
-	@ApiProperty({ example: "" })
-	user_id: number;
+	@ApiProperty({ example: "maa wadda a`ka robbuka wa ma qola" })
+	content: string;
 
 	@ApiProperty({ example: "" })
-	quantity: number;
+	time: string;
+
+	@ApiProperty({ example: "" })
+	status: string;
+	
 }

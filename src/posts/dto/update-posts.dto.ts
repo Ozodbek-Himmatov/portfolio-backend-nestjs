@@ -12,4 +12,6 @@ export class UpdatePostsDto {
 
 	@ApiProperty({ example: "" })
 	tags?: string;
+
+	;
 }

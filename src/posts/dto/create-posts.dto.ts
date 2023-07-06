@@ -12,4 +12,6 @@ export class CreatePostsDto {
 
 	@ApiProperty({ example: "" })
 	tags: string;
+
+	;
 }
