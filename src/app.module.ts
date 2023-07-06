@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+import { join } from 'path';
 import { ConfigModule } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { AddressesModule } from './addresses/addresses.module';
@@ -8,7 +9,9 @@ import { PostsModule } from './posts/posts.module';
 import { ProjectsModule } from './projects/projects.module';
 import { SkillsModule } from './skills/skills.module';
 import { AuthModule } from './auth/auth.module';
-import { join } from 'path';
+import { CommentsModule } from './comments/comments.module';
+import { DescriptionModule } from './description/description.module';
+import { ExperienceModule } from './experience/experience.module';
 
 @Module({
   imports: [
@@ -20,10 +23,13 @@ import { join } from 'path';
     MongooseModule.forRoot(process.env.MONGO_URI),
     AddressesModule,
     AdminModule,
+    AuthModule,
+    CommentsModule,
+    DescriptionModule,
+    ExperienceModule,
     PostsModule,
     ProjectsModule,
     SkillsModule,
-    AuthModule,
   ],
   controllers: [],
   providers: [],
