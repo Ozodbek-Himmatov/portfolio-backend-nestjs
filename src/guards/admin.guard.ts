@@ -14,13 +14,13 @@ export class AdminGuards implements CanActivate {
     const authHeader = req.headers.authorization;
     if (!authHeader)
       throw new UnauthorizedException({
-        msg: 'The User is NOT Registered',
+        msg: "Foydalanuvchi ro'yxatdan o'tmagan",
       });
     const bearer = authHeader.split(' ')[0];
     const token = authHeader.split(' ')[1];
     if (bearer !== 'Bearer' || !token) {
       throw new UnauthorizedException({
-        msg: 'The User is NOT Registered',
+        msg: "Foydalanuvchi ro'yxatdan o'tmagan",
       });
     }
     let user: any;
@@ -30,12 +30,12 @@ export class AdminGuards implements CanActivate {
       });
     } catch (error) {
       throw new UnauthorizedException({
-        msg: 'The User is NOT Registered',
+        msg: "Foydalanuvchi ro'yxatdan o'tmagan",
       });
     }
     if (user.role != 'ADMIN') {
       throw new UnauthorizedException({
-        msg: 'Not Allowed User',
+        msg: 'Ruxsat etilmagan foydalanuvchi',
       });
     }
     req.user = user;
