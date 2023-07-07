@@ -10,7 +10,7 @@ import { ProjectsModule } from './projects/projects.module';
 import { SkillsModule } from './skills/skills.module';
 import { AuthModule } from './auth/auth.module';
 import { CommentsModule } from './comments/comments.module';
-import { DescriptionModule } from './about/about.module';
+import { AboutModule } from './about/about.module';
 import { ExperienceModule } from './experience/experience.module';
 
 @Module({
@@ -21,11 +21,11 @@ import { ExperienceModule } from './experience/experience.module';
     }),
     ConfigModule.forRoot({ envFilePath: '.env', isGlobal: true }),
     MongooseModule.forRoot(process.env.MONGO_URI),
+    AuthModule,
+    AboutModule,
     AddressesModule,
     AdminModule,
-    AuthModule,
     CommentsModule,
-    DescriptionModule,
     ExperienceModule,
     PostsModule,
     ProjectsModule,
