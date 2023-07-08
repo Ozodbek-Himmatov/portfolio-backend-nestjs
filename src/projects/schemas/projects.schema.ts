@@ -5,20 +5,20 @@ export type ProjectsDocument = HydratedDocument<Projects>;
 
 @Schema({ timestamps: true })
 export class Projects {
-	
-	@Prop()
-	title:string;
+  @Prop()
+  title: string;
 
-	@Prop()
-	description:string;
+  @Prop()
+  preview: string;
 
-	@Prop()
-	preview:string;
+  @Prop()
+  demo: string;
 
-	@Prop()
-	demo:string;
+  @Prop()
+  img: string;
 
-	;
+  @Prop()
+  description: string;
 }
 
 export const ProjectsSchema = SchemaFactory.createForClass(Projects);
