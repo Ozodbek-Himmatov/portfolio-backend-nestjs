@@ -7,6 +7,9 @@ export class CreateExperienceDto {
 	@ApiProperty({ example: "Software Engineer" })
 	position: string;
 
-	@ApiProperty({ example: "13.03.2024-now" })
-	time: string;
+	@ApiProperty({ example: "13.03.2024" })
+	start_time: Date;
+
+	@ApiProperty({ example: "13.05.2024" })
+	end_time: string;
 }

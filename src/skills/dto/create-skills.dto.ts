@@ -6,7 +6,4 @@ export class CreateSkillsDto {
 
 	@ApiProperty({ example: "bx bxl-javascript" })
 	icon: string;
-
-	@ApiProperty({ example: "5" })
-	rating: string;
 }

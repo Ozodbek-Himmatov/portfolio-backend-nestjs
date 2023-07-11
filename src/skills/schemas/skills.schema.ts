@@ -10,9 +10,6 @@ export class Skills {
 
 	@Prop()
 	icon:string;
-
-	@Prop()
-	rating:string;
 }
 
 export const SkillsSchema = SchemaFactory.createForClass(Skills);
