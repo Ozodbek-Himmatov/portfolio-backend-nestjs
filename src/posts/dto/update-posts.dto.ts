@@ -9,9 +9,4 @@ export class UpdatePostsDto {
 
 	@ApiProperty({ example: "" })
 	content?: string;
-
-	@ApiProperty({ example: "" })
-	tags?: string;
-
-	;
 }

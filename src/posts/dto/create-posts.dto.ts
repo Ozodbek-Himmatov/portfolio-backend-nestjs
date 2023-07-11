@@ -9,9 +9,4 @@ export class CreatePostsDto {
 
 	@ApiProperty({ example: "" })
 	content: string;
-
-	@ApiProperty({ example: "" })
-	tags: string;
-
-	;
 }
