@@ -13,9 +13,6 @@ export class Posts {
 
 	@Prop()
 	content:string;
-
-	@Prop()
-	tags:string;
 }
 
 export const PostsSchema = SchemaFactory.createForClass(Posts);
