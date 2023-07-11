@@ -4,8 +4,8 @@ export class UpdateExperienceDto {
   @ApiProperty({ example: 'Microsoft Corporation' })
   company_name?: string;
 
-  @ApiProperty({ example: 'Software Engineer' })
-  position?: string;
+  @ApiProperty({ example: 'https://www.microsoft.com/' })
+  link?: string;
 
   @ApiProperty({ example: '13.03.2024' })
   start_time?: Date;

@@ -10,7 +10,7 @@ export class Experience {
 
   @Prop()
   link: string;
-
+  
   @Prop()
   start_time: Date;
 
