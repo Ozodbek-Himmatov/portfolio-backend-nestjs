@@ -8,7 +8,7 @@ export class UpdateExperienceDto {
   link?: string;
 
   @ApiProperty({ example: '13.03.2024' })
-  start_time?: Date;
+  start_time?: string;
 
   @ApiProperty({ example: '13.05.2024' })
   end_time?: string;
