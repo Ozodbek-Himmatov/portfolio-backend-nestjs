@@ -9,20 +9,21 @@ const start = async () => {
     const app = await NestFactory.create(AppModule);
     console.log('Starting app');
 
-    app.enableCors({
-      allowedHeaders: ['content-type'],
-      origin: [
-        'http://localhost:5174',
-        'http://localhost:5173',
-        'http://localhost:3000',
-        'http://localhost:3001',
-        '*',
-      ],
-      credentials: true,
-    });
+    // app.enableCors({
+    //   allowedHeaders: ['content-type'],
+    //   origin: [
+    //     'http://localhost:5174',
+    //     'http://localhost:5173',
+    //     'http://localhost:3000',
+    //     'http://localhost:3001',
+    //     '*',
+    //   ],
+    //   credentials: true,
+    // });
 
     const PORT = process.env.PORT || 7000;
 
+    app.enableCors();
     app.setGlobalPrefix('api');
 
     const config = new DocumentBuilder()
